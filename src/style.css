@@ -84,3 +84,9 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.linearLayout{
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}

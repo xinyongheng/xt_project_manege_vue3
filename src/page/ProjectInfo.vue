@@ -37,28 +37,107 @@
                 </el-card>
             </el-col>
         </el-row>
-        <el-card style="margin:5px 10px;" :body-style="{ padding: '10px 10px 15px 10px' }">
-            <el-row>
-                <el-col :span="12">
-                    <div>分包单位：</div>
-                </el-col>
-                <el-col :span="12" style="">
-                    <el-button class="add-bt" type="primary" plain @click="handleAddSubcontractingUnit">添加</el-button>
-                </el-col>
-            </el-row>
-            <el-row>
-                <div style="flex-wrap: wrap;flex-direction: row;flex: auto;">
-                    <span>1.</span><span>单位名称：<span style="text-decoration: underline">asdfasd</span></span>
-                </div>
-            </el-row>
-        </el-card>
+        <el-row>
+            <el-col>
 
+                <el-card style="margin:10px 10px;" :body-style="{ padding: '18px 10px 15px 10px' }">
+                    <el-row>
+                        <el-col :span="12">
+                            <div>分包单位：</div>
+                        </el-col>
+                        <el-col :span="12" style="">
+                            <el-button class="add-bt" type="primary" plain
+                                @click="handleAddSubcontractingUnit">添加</el-button>
+                        </el-col>
+                    </el-row>
+                    <el-row>
+                        <div style="flex-wrap: wrap;flex-direction: row;flex: auto;">
+                            <div class="unit-s">
+                                <span>1. </span>
+                                <span>单位名称：</span>
+                                <span class="text-line">&nbsp;Lorem ipsum dolor sit amet&nbsp;</span>
+                                <span>分包价格：</span><span class="text-line">&nbsp;1024.45 <span
+                                        style="font-size: 10px;">元</span>&nbsp;</span>
+                                <span>已支付成本：</span><span class="text-line">&nbsp;1024.45 <span
+                                        style="font-size: 10px;">元</span>&nbsp;</span>
+                                <span>模式：</span><span class="text-line">&nbsp;产品购销&nbsp;</span>
+                            </div>
+                            <div class="unit-s">
+                                <span>1. </span>
+                                <span>单位名称：</span>
+                                <span class="text-line">&nbsp;Lorem ipsum dolor sit amet&nbsp;</span>
+                                <span>分包价格：</span><span class="text-line">&nbsp;1024.45 <span
+                                        style="font-size: 10px;">元</span>&nbsp;</span>
+                                <span>已支付成本：</span><span class="text-line">&nbsp;1024.45 <span
+                                        style="font-size: 10px;">元</span>&nbsp;</span>
+                                <span>模式：</span><span class="text-line">&nbsp;劳务分包&nbsp;</span>
+                            </div>
+                        </div>
+                    </el-row>
+                </el-card>
+            </el-col>
+        </el-row>
+        <el-row style="margin: 0px 10px;">
+            <el-col>
+                <el-card style="margin:0px;" :body-style="{ padding: '18px 10px 15px 10px' }">
+                    <el-row>
+                        <el-col :span="12">
+                            <div>投标单位：</div>
+                        </el-col>
+                        <el-col :span="12" style="">
+                            <el-button class="add-bt" type="primary" plain
+                                @click="handleAddSubcontractingUnit">添加</el-button>
+                        </el-col>
+                    </el-row>
+                    <el-row>
+                        <el-col class="unit-s linearLayout">
+                            <div>1. 单位名称:</div><span class="text-line">&nbsp;***************************&nbsp;</span>
+                        </el-col>
+                        <el-col class="unit-s linearLayout">
+                            <div>2. 单位名称:</div><span class="text-line">&nbsp;***************************&nbsp;</span>
+                        </el-col>
+                        <el-col class="unit-s linearLayout">
+                            <div>3. 单位名称:</div><span class="text-line">&nbsp;***************************&nbsp;</span>
+                        </el-col>
+                    </el-row>
+                </el-card>
+            </el-col>
+        </el-row>
+        <el-row style="margin: 10px 10px;">
+            <el-col>
+                <el-card style="margin:0px;" :body-style="{ padding: '18px 10px 15px 10px' }">
+                    <el-row>
+                        <el-col :span="12">
+                            <div>中标单位：</div>
+                        </el-col>
+                        <el-col :span="12" style="">
+                            <el-button class="add-bt" type="primary" plain
+                                @click="handleAddSubcontractingUnit">添加</el-button>
+                        </el-col>
+                    </el-row>
+                    <el-row>
+                        <el-col class="unit-s linearLayout">
+                            <div>1. 单位名称:</div>
+                            <span class="text-line">&nbsp;***************************&nbsp;</span>
+                        </el-col>
+                        <el-col class="unit-s linearLayout">
+                            <div>2. 单位名称:</div>
+                            <span class="text-line">&nbsp;***************************&nbsp;</span>
+                        </el-col>
+                        <el-col class="unit-s linearLayout">
+                            <div>3. 单位名称:</div>
+                            <span class="text-line">&nbsp;*********************asdfasd asdf asdf asdf ******&nbsp;</span>
+                        </el-col>
+                    </el-row>
+                </el-card>
+            </el-col>
+        </el-row>
     </el-form>
 </template>
 <script setup lang="ts">
 import { reactive } from 'vue';
 import { ProjectInfo } from '../bean';
-const cardStyleItem = { padding: '10px 10px 0px 10px' }
+const cardStyleItem = { padding: '15px 10px 5px 10px' }
 const project = reactive<ProjectInfo>({
     year: '',
     content: '',
@@ -87,5 +166,15 @@ const handleAddSubcontractingUnit = () => {
     right: 0px;
     padding: 5px 10px;
     height: min-content;
+}
+
+.text-line {
+    text-decoration: underline;
+    padding-right: 10px;
+    padding-left: 8px;
+}
+
+.unit-s {
+    padding-top: 20px;
 }
 </style>
