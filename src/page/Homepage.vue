@@ -4,6 +4,7 @@
         <el-table-column type="index" label="序号" width="80" />
         <el-table-column prop="year" label="年份" width="180" />
         <el-table-column prop="projectName" label="项目名称" min-width="300" />
+
         <el-table-column prop="buildUnit" label="建设单位" min-width="300" />
         <el-table-column width="100" lable="详情">
             <template #default="info">
@@ -18,25 +19,15 @@
 
 import { useRouter } from 'vue-router';
 import { ProjectInfoList } from '../bean/index';
-import { ElMessage } from 'element-plus'
+import { ElMessage } from 'element-plus';
+import { projectDataList as list } from '../bean/projectDataList';
 const router = useRouter();
-const projectDataList: Array<ProjectInfoList> = [
-    { id: 1, ctime: '2022-02-01', utime: '2022-02-01', year: '2022', projectName: '***********************建设合同1', buildUnit: '蒙城县***管理局' },
-    { id: 2, ctime: '2022-02-01', utime: '2022-02-01', year: '2023', projectName: '***********************建设合同2', buildUnit: '蒙城县***管理局' },
-    { id: 3, ctime: '2022-02-01', utime: '2022-02-01', year: '2022', projectName: '***********************建设合同3', buildUnit: '蒙城县***管理局' },
-    { id: 4, ctime: '2022-02-01', utime: '2022-02-01', year: '2022', projectName: '***********************建设合同4', buildUnit: '蒙城县***管理局' },
-    { id: 5, ctime: '2022-02-01', utime: '2022-02-01', year: '2022', projectName: '***********************建设合同5', buildUnit: '蒙城县***管理局' },
-    { id: 6, ctime: '2022-02-01', utime: '2022-02-01', year: '2022', projectName: '***********************建设合同6', buildUnit: '蒙城县***管理局' },
-    { id: 7, ctime: '2022-02-01', utime: '2022-02-01', year: '2022', projectName: '***********************建设合同7', buildUnit: '蒙城县***管理局' },
-    { id: 8, ctime: '2022-02-01', utime: '2022-02-01', year: '2022', projectName: '***********************建设合同8', buildUnit: '蒙城县***管理局' },
-    { id: 9, ctime: '2022-02-01', utime: '2022-02-01', year: '2022', projectName: '***********************建设合同9', buildUnit: '蒙城县***管理局' },
-    { id: 10, ctime: '2022-02-01', utime: '2022-02-01', year: '2022', projectName: '***********************建设合同10', buildUnit: '蒙城县***管理局' },
-];
+const projectDataList: Array<ProjectInfoList> = list
 const handleClickInfo = (item: ProjectInfoList) => {
     const projectId = item.id;
     console.log(item);
-    ElMessage('this is a message. projectId=' + projectId)
-    router.push({name:'projectInfo'});
+    ElMessage('this is a message. projectId=' + projectId);
+    router.push({ name: 'projectInfo' });
 }
 </script>
 

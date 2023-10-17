@@ -3,9 +3,18 @@
  */
 interface ProjectInfoList {
     id: number,
+    // 年份
     year: string,
+    // 项目名称
     projectName: string,
+    // 建设单位
     buildUnit: string,
+    // 项目负责人
+    projectLeader: string,
+    // 利润率
+    profitMargin: string,
+    // 毛利
+    grossProfit: string,
     ctime: string,
     utime: string,
 }
@@ -17,7 +26,14 @@ interface SubcontractingUnit {
     price: string,
     // 成本已支付
     costPaid: string,
-    remark: string,
+    // 招标方式
+    tenderMethod: string,
+    // 分包模式
+    modeStyle: string,
+    // 投标单位
+    biddingUnits?: Array<Unit>,
+    // 中标单位
+    winningUnit?: Array<Unit>,
 }
 /**
  * 单位
@@ -39,9 +55,5 @@ interface ProjectInfo extends ProjectInfoList {
     repaidAmount?: number,
     // 分包单位
     subcontractingUnits?: Array<SubcontractingUnit>,
-    // 投标单位
-    biddingUnits?: Array<Unit>,
-    // 中标单位
-    winningUnit?: Array<Unit>,
 }
 export type { ProjectInfoList, ProjectInfo, SubcontractingUnit, Unit };

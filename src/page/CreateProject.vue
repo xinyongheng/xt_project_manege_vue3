@@ -22,6 +22,9 @@ const project = reactive<ProjectInfo>({
     projectName: '',
     buildUnit: '',
     ctime: '',
-    utime: ''
+    utime: '',
+    projectLeader: '',
+    profitMargin: '',
+    grossProfit: ''
 })
 </script>
