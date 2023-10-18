@@ -55,8 +55,10 @@
 
         <el-card style="margin:10px 10px;" :body-style="{ padding: '18px 10px 15px 10px' }">
             <el-row>
-                <el-col>
+                <el-col style="margin-bottom: 10px;">
                     <div>分包单位：</div>
+                    <el-button type="primary" style="position: absolute;right: 10px;top:-5px;"
+                        @click="handleAddSubcontractingUnit">添加</el-button>
                 </el-col>
                 <el-col>
                     <el-card :body-style="cardStyleItem">
@@ -105,7 +107,7 @@
                     <el-card :body-style="cardStyleItem">
                         <el-row>
                             <el-col>
-                                <span class="circleNoBg">1</span>
+                                <span class="circleNoBg">2</span>
                                 <span>单位名称：</span>
                                 <span
                                     class="text-line">嘻嘻嘻嘻嘻嘻嘻嘻手动阀阿斯蒂芬阿斯顿嘻嘻嘻嘻嘻嘻嘻嘻手动阀阿斯蒂芬阿斯顿嘻嘻嘻嘻嘻嘻嘻嘻手动阀阿斯蒂芬阿斯顿嘻嘻嘻嘻嘻嘻嘻嘻手动阀阿斯蒂芬阿斯顿</span>
@@ -146,12 +148,21 @@
                 </el-col>
             </el-row>
         </el-card>
-
     </el-form>
+    <el-drawer v-model="drawer" direction="rtl">
+        <template #header>
+            <span>添加分包单位：</span>
+        </template>
+        <template #default>
+            <SubcontractorUnit />
+        </template>
+    </el-drawer>
 </template>
 <script setup lang="ts">
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 import { ProjectInfo } from '../bean';
+import SubcontractorUnit from '../components/SubcontractorUnit.vue';
+// import HelloWorld from '../components/HelloWorld.vue';
 const cardStyleItem = { padding: '15px 10px 5px 10px' }
 const project = reactive<ProjectInfo>({
     year: '',
@@ -165,12 +176,13 @@ const project = reactive<ProjectInfo>({
     profitMargin: '',
     grossProfit: ''
 });
+const drawer = ref(false);
 const disabledDate = (time: Date) => {
     return time.getTime() > Date.now()
 }
 const handleAddSubcontractingUnit = () => {
     console.log('分包单位');
-
+    drawer.value = true;
 }
 </script>
 <style scoped>
