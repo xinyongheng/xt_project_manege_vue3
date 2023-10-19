@@ -149,12 +149,13 @@
             </el-row>
         </el-card>
     </el-form>
-    <el-drawer v-model="drawer" direction="rtl">
-        <template #header>
-            <span>添加分包单位：</span>
-        </template>
+    <el-drawer v-model="drawer" direction="rtl" class="leftDrawer" :with-header="false">
         <template #default>
-            <SubcontractorUnit />
+            <div>
+                <h4 style="padding:0px;margin:0px;font-size:18px;">添加分包单位：</h4>
+                <SubcontractorUnit />
+            </div>
+
         </template>
     </el-drawer>
 </template>
@@ -244,5 +245,19 @@ const handleAddSubcontractingUnit = () => {
 .unit-item .item {
     margin-left: 30px;
     min-width: 180px;
+}
+
+::v-deep .el-drawer {
+    background-color: red !important
+}
+
+::v-deep .leftDrawer {
+    z-index: -3000 !important;
+}
+
+:deep(.el-drawer__header) {
+    padding: 0px !important;
+    margin-bottom: 0px !important;
+    background-color: red !important;
 }
 </style>
