@@ -12,7 +12,7 @@ interface ProjectInfoList {
     // 项目负责人
     projectLeader: string,
     // 利润率
-    profitMargin: string,
+    profitMargin: number,
     // 毛利
     grossProfit: string,
     ctime: string,
@@ -23,9 +23,9 @@ interface ProjectInfoList {
  */
 interface SubcontractingUnit {
     name: string,
-    price: string,
+    price: number,
     // 成本已支付
-    costPaid: string,
+    costPaid: number,
     // 招标方式
     tenderMethod: string,
     // 分包模式

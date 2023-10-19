@@ -55,95 +55,50 @@
 
         <el-card style="margin:10px 10px;" :body-style="{ padding: '18px 10px 15px 10px' }">
             <el-row>
-                <el-col style="margin-bottom: 10px;">
+                <el-col>
                     <div>分包单位：</div>
                     <el-button type="primary" style="position: absolute;right: 10px;top:-5px;"
                         @click="handleAddSubcontractingUnit">添加</el-button>
                 </el-col>
-                <el-col>
+                <el-col v-for="(item, index) in project.subcontractingUnits" style="margin-top:10px;">
                     <el-card :body-style="cardStyleItem">
                         <el-row>
                             <el-col>
-                                <span class="circleNoBg">1</span>
+                                <span class="circleNoBg">{{ (index + 1) }}</span>
                                 <span>单位名称：</span>
-                                <span
-                                    class="text-line">嘻嘻嘻嘻嘻嘻嘻嘻手动阀阿斯蒂芬阿斯顿嘻嘻嘻嘻嘻嘻嘻嘻手动阀阿斯蒂芬阿斯顿嘻嘻嘻嘻嘻嘻嘻嘻手动阀阿斯蒂芬阿斯顿嘻嘻嘻嘻嘻嘻嘻嘻手动阀阿斯蒂芬阿斯顿</span>
+                                <span class="text-line" :title="item.name">{{ item.name }}</span>
+                                <div style="position: absolute;right: 0px;top:0px;">
+                                    <el-button @click="handleChange(item)">修改</el-button>
+                                    <el-button @click="handleDelete(index)">删除</el-button>
+                                </div>
                             </el-col>
                             <el-col class="unit-item" style="flex-wrap: wrap;display: flex;">
-                                <div class="item"><span><span>分包价格：</span><span class="text-line">&nbsp;1024.45 <span
-                                                style="font-size: 10px;">元</span>&nbsp;</span></span></div>
-                                <div class="item"><span>已支付成本：</span><span class="text-line">&nbsp;1024.45 <span
+                                <div class="item"><span><span>分包价格：</span><span class="text-line">&nbsp;{{ item.price }}
+                                            <span style="font-size: 10px;">元</span>&nbsp;</span></span></div>
+                                <div class="item"><span>已支付成本：</span><span class="text-line">&nbsp;{{ item.costPaid }} <span
                                             style="font-size: 10px;">元</span>&nbsp;</span></div>
-                                <div class="item"><span>模式：</span><span class="text-line">&nbsp;产品购销&nbsp;</span></div>
-                                <div class="item"><span>招标方式：</span><span class="text-line">&nbsp;询价&nbsp;</span></div>
+                                <div class="item"><span>分包模式：</span><span class="text-line">&nbsp;{{ item.modeStyle
+                                }}&nbsp;</span></div>
+                                <div class="item"><span>招标方式：</span><span class="text-line">&nbsp;{{ item.tenderMethod
+                                }}&nbsp;</span></div>
                             </el-col>
                             <el-col class="unit-item">
                                 <div style="display: flex;flex-wrap: wrap;">
                                     <div style="min-width: 40%;">
                                         <div>投标单位：</div>
                                         <ul style="margin:5px;list-style:decimal">
-                                            <li class="">阿斯蒂芬</li>
-                                            <li>阿斯蒂芬</li>
-                                            <li>阿斯蒂芬</li>
+                                            <li class="" v-for="unit in item.biddingUnits">{{ unit.name }}</li>
                                         </ul>
                                     </div>
                                     <div>
                                         <div>中标单位：</div>
                                         <ul style="margin:5px;list-style:decimal">
-                                            <li class="">阿斯蒂芬</li>
-                                            <li>阿斯蒂芬</li>
+                                            <li class="" v-for="unit in item.winningUnit">{{ unit.name }}</li>
                                         </ul>
                                     </div>
                                 </div>
                             </el-col>
-                            <el-col>
-
-                            </el-col>
                         </el-row>
-
-                    </el-card>
-                </el-col>
-                <el-col style="margin-top: 20px;">
-                    <el-card :body-style="cardStyleItem">
-                        <el-row>
-                            <el-col>
-                                <span class="circleNoBg">2</span>
-                                <span>单位名称：</span>
-                                <span
-                                    class="text-line">嘻嘻嘻嘻嘻嘻嘻嘻手动阀阿斯蒂芬阿斯顿嘻嘻嘻嘻嘻嘻嘻嘻手动阀阿斯蒂芬阿斯顿嘻嘻嘻嘻嘻嘻嘻嘻手动阀阿斯蒂芬阿斯顿嘻嘻嘻嘻嘻嘻嘻嘻手动阀阿斯蒂芬阿斯顿</span>
-                            </el-col>
-                            <el-col class="unit-item" style="flex-wrap: wrap;display: flex;">
-                                <div class="item"><span><span>分包价格：</span><span class="text-line">&nbsp;1024.45 <span
-                                                style="font-size: 10px;">元</span>&nbsp;</span></span></div>
-                                <div class="item"><span>已支付成本：</span><span class="text-line">&nbsp;1024.45 <span
-                                            style="font-size: 10px;">元</span>&nbsp;</span></div>
-                                <div class="item"><span>模式：</span><span class="text-line">&nbsp;产品购销&nbsp;</span></div>
-                                <div class="item"><span>招标方式：</span><span class="text-line">&nbsp;询价&nbsp;</span></div>
-                            </el-col>
-                            <el-col class="unit-item">
-                                <div style="display: flex;flex-wrap: wrap;">
-                                    <div style="min-width: 40%;">
-                                        <div>投标单位：</div>
-                                        <ul style="margin:5px;list-style:decimal">
-                                            <li class="">阿斯蒂芬</li>
-                                            <li>阿斯蒂芬</li>
-                                            <li>阿斯蒂芬</li>
-                                        </ul>
-                                    </div>
-                                    <div>
-                                        <div>中标单位：</div>
-                                        <ul style="margin:5px;list-style:decimal">
-                                            <li class="">阿斯蒂芬</li>
-                                            <li>阿斯蒂芬</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </el-col>
-                            <el-col>
-
-                            </el-col>
-                        </el-row>
-
                     </el-card>
                 </el-col>
             </el-row>
@@ -152,17 +107,36 @@
     <el-drawer v-model="drawer" direction="rtl" class="leftDrawer" :with-header="false">
         <template #default>
             <div>
-                <h4 style="padding:0px;margin:0px;font-size:18px;">添加分包单位：</h4>
-                <SubcontractorUnit />
+                <h4 style="padding:0px;margin:0px;font-size:18px;">分包单位：</h4>
+                <div style="padding-top:10px;"></div>
+                <SubcontractorUnit ref="childRef" :subcontractor-unit="makeEmptySUnit" />
             </div>
-
+        </template>
+        <template #footer>
+            <div>
+                <el-button @click="drawer = false">取消</el-button>
+                <el-button type="primary" @click="confirmClick">确定</el-button>
+            </div>
         </template>
     </el-drawer>
+    <el-dialog v-model="dialogVisible" title="温馨提示" width="30%">
+        <span>确定要删除第{{ indexNo }}个分包单位么？</span>
+        <template #footer>
+            <span class="dialog-footer">
+                <el-button @click="dialogVisible = false">取消</el-button>
+                <el-button type="primary" @click="handleDeleteDialog(indexNo - 1)">
+                    确定
+                </el-button>
+            </span>
+        </template>
+    </el-dialog>
 </template>
 <script setup lang="ts">
 import { reactive, ref } from 'vue';
-import { ProjectInfo } from '../bean';
+import { ProjectInfo, SubcontractingUnit } from '../bean';
 import SubcontractorUnit from '../components/SubcontractorUnit.vue';
+import { ElMessage } from 'element-plus'
+const childRef = ref();
 // import HelloWorld from '../components/HelloWorld.vue';
 const cardStyleItem = { padding: '15px 10px 5px 10px' }
 const project = reactive<ProjectInfo>({
@@ -174,16 +148,77 @@ const project = reactive<ProjectInfo>({
     ctime: '',
     utime: '',
     projectLeader: '',
-    profitMargin: '',
+    profitMargin: 0,
     grossProfit: ''
 });
 const drawer = ref(false);
+const indexNo = ref(0);
+const dialogVisible = ref(false);
+const btClickTarget = ref('添加');
 const disabledDate = (time: Date) => {
     return time.getTime() > Date.now()
 }
 const handleAddSubcontractingUnit = () => {
-    console.log('分包单位');
+    makeEmptySUnit.value = {
+        name: '',
+        price: 0,
+        costPaid: 0,
+        tenderMethod: '',
+        modeStyle: '',
+        biddingUnits: [{ name: '' }],
+        winningUnit: [{ name: '' }]
+    }
+    btClickTarget.value = '添加';
     drawer.value = true;
+}
+
+function addSUnit(s_unit: SubcontractingUnit) {
+    if (project.subcontractingUnits) {
+        project.subcontractingUnits.push(s_unit);
+    } else {
+        project.subcontractingUnits = [s_unit];
+    }
+}
+const makeEmptySUnit = ref<SubcontractingUnit>({
+    name: '',
+    price: 0,
+    costPaid: 0,
+    tenderMethod: '',
+    modeStyle: '',
+    biddingUnits: [{ name: '' }],
+    winningUnit: [{ name: '' }]
+})
+const confirmClick = () => {
+    const result = childRef.value.confirm();
+    if (btClickTarget.value != '添加') {
+        if (result) {
+            drawer.value = false;
+        }
+        return;
+    }
+    if (result) {
+        addSUnit(result);
+        drawer.value = false;
+    }
+}
+
+const handleChange = (item: SubcontractingUnit) => {
+    makeEmptySUnit.value = item;
+    btClickTarget.value = '修改';
+    drawer.value = true;
+}
+const handleDelete = (index: number) => {
+    const length = project.subcontractingUnits?.length ?? 0;
+    if (length > index) {
+        indexNo.value = index + 1;
+        dialogVisible.value = true;
+    } else {
+        ElMessage.error('错误！');
+    }
+}
+const handleDeleteDialog = (index: number) => {
+    project.subcontractingUnits!.splice(index, 1);
+    dialogVisible.value = false;
 }
 </script>
 <style scoped>
@@ -245,19 +280,5 @@ const handleAddSubcontractingUnit = () => {
 .unit-item .item {
     margin-left: 30px;
     min-width: 180px;
-}
-
-::v-deep .el-drawer {
-    background-color: red !important
-}
-
-::v-deep .leftDrawer {
-    z-index: -3000 !important;
-}
-
-:deep(.el-drawer__header) {
-    padding: 0px !important;
-    margin-bottom: 0px !important;
-    background-color: red !important;
 }
 </style>
